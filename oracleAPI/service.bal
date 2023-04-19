@@ -1,5 +1,4 @@
 import ballerina/http;
-import ballerina/io;
 
 // Read the employees JSON file
 type EmployeeData record {
@@ -10,9 +9,22 @@ type EmployeeData record {
     int salary;
 };
 
-json jsonContent = check io:fileReadJson("./employees.json");
-
-EmployeeData[] employeesData = check jsonContent.cloneWithType();
+EmployeeData[] employeesData = [
+    {
+        "employeeId": "E001",
+        "address": "123 Main St",
+        "department": "IT",
+        "servicePeriod": 5,
+        "salary": 50000
+    },
+    {
+        "employeeId": "E002",
+        "address": "456 Elm St",
+        "department": "HR",
+        "servicePeriod": 10,
+        "salary": 150000
+    }
+];
 
 //EmployeeData[] readJson = check io:fileReadJson("./employees.json");
 //io:println (readJson) ;
